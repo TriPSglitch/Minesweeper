@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid Name ="FieldGrid"  HorizontalAlignment="Left" Height="200" Margin="32,83,0,0" VerticalAlignment="Top" Width="200">
+        <Grid x:Name ="FieldGrid" HorizontalAlignment="Left" Height="200" Margin="32,83,0,0" VerticalAlignment="Top" Width="200">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -32,7 +32,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Name ="C00"  Grid.Column="0" Grid.Row="0"/>
+            <Button Grid.Column="0" Grid.Row="0"/>
             <Button Grid.Column="0" Grid.Row="1"/>
             <Button Grid.Column="0" Grid.Row="2"/>
             <Button Grid.Column="0" Grid.Row="3"/>
@@ -133,5 +133,8 @@
             <Button Grid.Column="9" Grid.Row="8"/>
             <Button Grid.Column="9" Grid.Row="9"/>
         </Grid>
+        <Label HorizontalAlignment="Left" Margin="438,98,0,0" VerticalAlignment="Top" Height="29" Width="110" Content="Количество мин:">
+        </Label>
+        <TextBox x:Name="MineCounter" Height="23" TextWrapping="Wrap" Text="" Margin="539,102,221,294"/>
     </Grid>
 </Window>
