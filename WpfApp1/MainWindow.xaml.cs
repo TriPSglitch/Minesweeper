@@ -41,20 +41,13 @@ namespace WpfApp1
             Button[,] buttons = new Button[10, 10];                                                      // Создаю матрицу кнопок
             foreach (UIElement item in FieldGrid.Children)                                              // Прохожу по матрице кнопок на форме
             {
-                for (int i = 0; i < field.GetLength(0); i++)
-                {
-                    for (int j = 0; j < field.GetLength(1); j++)
-                    {
-                        if (Grid.GetRow(item) == i && Grid.GetColumn(item) == j)                        // Если Строка == i и столбец == j
-                        {
-                            buttons[i, j] = (Button)item;                                               // То засовываю кнопку в массив
-                            if (field[i, j].IsMine)
-                                buttons[i, j].Content = image;                                          // Если кнопка это мина, то вывожу на кнопку картинку
-                            else
-                                buttons[i, j].Content = '0';                                            // Иначе вывожу на кнопку "0"
-                        }
-                    }
-                }
+                int i = Grid.GetRow(item), j = Grid.GetColumn(item);
+                buttons[i, j] = (Button)item; 
+                if (field[i, j].IsMine)
+                    buttons[i, j].Content = image;                                          // Если кнопка это мина, то вывожу на кнопку картинку
+                else
+                    buttons[i, j].Content = '0';                                            // Иначе вывожу на кнопку "0"
+
             }
             #endregion
         }
