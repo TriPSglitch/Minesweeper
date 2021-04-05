@@ -10,6 +10,7 @@ namespace FieldSpace
         Random rnd = new Random();
         public bool IsMine { get; set; } = false;       // Ячейка имеет состояние мины и нет
         public int MineCount { get; set; } = 45;        // Количсетво мин на поле
+        public int MineAround { get; set; } = 0;        // количество мин вокруг
         public void Generate(Field[,] field)            // Метод для генерации поля
         {
             #region Генерация поля
@@ -44,6 +45,119 @@ namespace FieldSpace
             }
             if (MineCount > 0)                                                              // если остались невыставленные мины, то вызываем метод снова
                 Generate(field);
+            #endregion
+        }
+        public void MineAroundCounter(Field[,] field, int i, int j)             // Метод, который считает количество мин вокруг
+        {
+            #region Количество мин вокруг
+            if (i == 0)
+            {
+                if (j == 0)
+                {
+                    for (int m = i; m <= i + 1; m++)
+                    {
+                        for (int k = j; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsMine)
+                                field[i, j].MineAround++;
+                        }
+                    }
+                }
+                else if (j == 9)
+                {
+                    for (int m = i; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j; k++)
+                        {
+                            if (field[m, k].IsMine)
+                                field[i, j].MineAround++;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int m = i; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsMine)
+                                field[i, j].MineAround++;
+                        }
+                    }
+                }
+            }
+            else if (i == 9)
+            {
+                if (j == 0)
+                {
+                    for (int m = i - 1; m <= i; m++)
+                    {
+                        for (int k = j; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsMine)
+                                field[i, j].MineAround++;
+                        }
+                    }
+                }
+                else if (j == 9)
+                {
+                    for (int m = i - 1; m <= i; m++)
+                    {
+                        for (int k = j - 1; k <= j; k++)
+                        {
+                            if (field[m, k].IsMine)
+                                field[i, j].MineAround++;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int m = i - 1; m <= i; m++)
+                    {
+                        for (int k = j - 1; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsMine)
+                                field[i, j].MineAround++;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (j == 0)
+                {
+                    for (int m = i - 1; m <= i + 1; m++)
+                    {
+                        for (int k = j; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsMine)
+                                field[i, j].MineAround++;
+                        }
+                    }
+                }
+                else if (j == 9)
+                {
+                    for (int m = i - 1; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j; k++)
+                        {
+                            if (field[m, k].IsMine)
+                                field[i, j].MineAround++;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int m = i - 1; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsMine)
+                                field[i, j].MineAround++;
+                        }
+                    }
+                }
+            }
             #endregion
         }
     }

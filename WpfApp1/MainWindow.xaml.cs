@@ -14,7 +14,7 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-
+            #region Инициализация поля
             Field[,] field = new Field[10, 10];                             // Создаём массив, размерностью поля
             for (int i = 0; i < field.GetLength(0); i++)
             {                                                           //
@@ -32,6 +32,16 @@ namespace WpfApp1
             fieldConstructor.Generate(field);                               // Вызываем генерацию поля
 
 
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    fieldConstructor.MineAroundCounter(field, i, j);            // Прохожу по полю и получаю количество мин вокруг
+                }
+            }
+            #endregion
+
+
             Image image = new Image();
             image.Source = new BitmapImage(new Uri(@"C:\Users\Максим\source\repos\Minesweeper\WpfApp1\Icons\Mine.jpg"));    // Выбираю изображение для мины
             MineCounter.Text = Convert.ToString(MineCount - fieldConstructor.MineCount);                                    // Вывожу кол-во мин
@@ -42,11 +52,11 @@ namespace WpfApp1
             foreach (UIElement item in FieldGrid.Children)                                              // Прохожу по матрице кнопок на форме
             {
                 int i = Grid.GetRow(item), j = Grid.GetColumn(item);
-                buttons[i, j] = (Button)item; 
+                buttons[i, j] = (Button)item;
                 if (field[i, j].IsMine)
                     buttons[i, j].Content = image;                                          // Если кнопка это мина, то вывожу на кнопку картинку
                 else
-                    buttons[i, j].Content = '0';                                            // Иначе вывожу на кнопку "0"
+                    buttons[i, j].Content = field[i, j].MineAround;                         // Иначе вывожу на кнопку количество мин вокруг
 
             }
             #endregion
