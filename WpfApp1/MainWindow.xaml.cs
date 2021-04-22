@@ -65,24 +65,119 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (field[Grid.GetRow((Button)sender), Grid.GetColumn((Button)sender)].IsMine)
+            int i = Grid.GetRow((Button)sender), j = Grid.GetColumn((Button)sender);
+            if (field[i, j].IsMine)                                     // Если кнопка, на которую мы нажали - мина
             {
-                MessageBox.Show("Вы проиграли");
+                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
                 this.Close();
             }
-            else
+            else                                                        // Если это не мина
             {
-                if (field[Grid.GetRow((Button)sender), Grid.GetColumn((Button)sender)].MineAround == 0)
+                if (field[i, j].MineAround == 0)                        // И бомб вокруг ноль, то открываем клетки вокруг
                 {
-                    buttons[Grid.GetRow((Button)sender) - 1, Grid.GetColumn((Button)sender) - 1].Content = field[Grid.GetRow((Button)sender) - 1, Grid.GetColumn((Button)sender) - 1].MineAround;
-                    buttons[Grid.GetRow((Button)sender) - 1, Grid.GetColumn((Button)sender)].Content = field[Grid.GetRow((Button)sender) - 1, Grid.GetColumn((Button)sender)].MineAround;
-                    buttons[Grid.GetRow((Button)sender) - 1, Grid.GetColumn((Button)sender) + 1].Content = field[Grid.GetRow((Button)sender) - 1, Grid.GetColumn((Button)sender) + 1].MineAround;
-                    buttons[Grid.GetRow((Button)sender), Grid.GetColumn((Button)sender) - 1].Content = field[Grid.GetRow((Button)sender), Grid.GetColumn((Button)sender) - 1].MineAround;
-                    buttons[Grid.GetRow((Button)sender) + 1, Grid.GetColumn((Button)sender) - 1].Content = field[Grid.GetRow((Button)sender) + 1, Grid.GetColumn((Button)sender) - 1].MineAround;
-                    buttons[Grid.GetRow((Button)sender) + 1, Grid.GetColumn((Button)sender)].Content = field[Grid.GetRow((Button)sender) + 1, Grid.GetColumn((Button)sender)].MineAround;
-                    buttons[Grid.GetRow((Button)sender) + 1, Grid.GetColumn((Button)sender) + 1].Content = field[Grid.GetRow((Button)sender) + 1, Grid.GetColumn((Button)sender) + 1].MineAround;
+                    #region Открытие других клеток
+                    if (i == 0)
+                    {
+                        if (j == 0)
+                        {
+                            for (int m = i; m <= i + 1; m++)
+                            {
+                                for (int k = j; k <= j + 1; k++)
+                                {
+                                    buttons[m, k].Content = field[m, k].MineAround;             // Открываем другие клетки
+                                }
+                            }
+                        }
+                        else if (j == 9)
+                        {
+                            for (int m = i; m <= i + 1; m++)
+                            {
+                                for (int k = j - 1; k <= j; k++)
+                                {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int m = i; m <= i + 1; m++)
+                            {
+                                for (int k = j - 1; k <= j + 1; k++)
+                                {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                }
+                            }
+                        }
+                    }
+                    else if (i == 9)
+                    {
+                        if (j == 0)
+                        {
+                            for (int m = i - 1; m <= i; m++)
+                            {
+                                for (int k = j; k <= j + 1; k++)
+                                {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                }
+                            }
+                        }
+                        else if (j == 9)
+                        {
+                            for (int m = i - 1; m <= i; m++)
+                            {
+                                for (int k = j - 1; k <= j; k++)
+                                {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int m = i - 1; m <= i; m++)
+                            {
+                                for (int k = j - 1; k <= j + 1; k++)
+                                {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (j == 0)
+                        {
+                            for (int m = i - 1; m <= i + 1; m++)
+                            {
+                                for (int k = j; k <= j + 1; k++)
+                                {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                }
+                            }
+                        }
+                        else if (j == 9)
+                        {
+                            for (int m = i - 1; m <= i + 1; m++)
+                            {
+                                for (int k = j - 1; k <= j; k++)
+                                {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int m = i - 1; m <= i + 1; m++)
+                            {
+                                for (int k = j - 1; k <= j + 1; k++)
+                                {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                }
+                            }
+                        }
+                    }
+                    #endregion
                 }
-                buttons[Grid.GetRow((Button)sender), Grid.GetColumn((Button)sender)].Content = field[Grid.GetRow((Button)sender), Grid.GetColumn((Button)sender)].MineAround;
+                buttons[i, j].Content = field[i, j].MineAround;         // Открываем клетку, на которую мы нажали
             }
         }
     }
