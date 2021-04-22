@@ -62,133 +62,134 @@ namespace WpfApp1
                 {
                     int m = Grid.GetRow(item), k = Grid.GetColumn(item);
                     buttons[m, k] = (Button)item;
-                    if (field[m, k].IsMine)
-                        buttons[m, k].Content = BombImage;                                          // Если кнопка это мина, то вывожу на кнопку картинку
+                    /*if (field[m, k].IsMine)
+                        buttons[m, k].Content = BombImage;                                      // Если кнопка это мина, то вывожу на кнопку картинку
                     else
-                        buttons[m, k].Content = field[m, k].MineAround;                         // Иначе вывожу на кнопку количество мин вокруг
+                        buttons[m, k].Content = field[m, k].MineAround;                         // Иначе вывожу на кнопку количество мин вокруг*/
 
                 }
                 #endregion
             }
             #endregion
-
-
-            #region Нажатие на кнопку
-            int i = Grid.GetRow((Button)sender), j = Grid.GetColumn((Button)sender);
-            if (field[i, j].IsMine)                                     // Если кнопка, на которую мы нажали - мина
+            else
             {
-                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
-                this.Close();
-            }
-            else                                                        // Если это не мина
-            {
-                if (field[i, j].MineAround == 0)                        // И бомб вокруг ноль, то открываем клетки вокруг
+                #region Нажатие на кнопку
+                int i = Grid.GetRow((Button)sender), j = Grid.GetColumn((Button)sender);
+                if (field[i, j].IsMine)                                     // Если кнопка, на которую мы нажали - мина
                 {
-                    #region Открытие других клеток
-                    if (i == 0)
-                    {
-                        if (j == 0)
-                        {
-                            for (int m = i; m <= i + 1; m++)
-                            {
-                                for (int k = j; k <= j + 1; k++)
-                                {
-                                    buttons[m, k].Content = field[m, k].MineAround;             // Открываем другие клетки
-                                }
-                            }
-                        }
-                        else if (j == 9)
-                        {
-                            for (int m = i; m <= i + 1; m++)
-                            {
-                                for (int k = j - 1; k <= j; k++)
-                                {
-                                    buttons[m, k].Content = field[m, k].MineAround;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            for (int m = i; m <= i + 1; m++)
-                            {
-                                for (int k = j - 1; k <= j + 1; k++)
-                                {
-                                    buttons[m, k].Content = field[m, k].MineAround;
-                                }
-                            }
-                        }
-                    }
-                    else if (i == 9)
-                    {
-                        if (j == 0)
-                        {
-                            for (int m = i - 1; m <= i; m++)
-                            {
-                                for (int k = j; k <= j + 1; k++)
-                                {
-                                    buttons[m, k].Content = field[m, k].MineAround;
-                                }
-                            }
-                        }
-                        else if (j == 9)
-                        {
-                            for (int m = i - 1; m <= i; m++)
-                            {
-                                for (int k = j - 1; k <= j; k++)
-                                {
-                                    buttons[m, k].Content = field[m, k].MineAround;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            for (int m = i - 1; m <= i; m++)
-                            {
-                                for (int k = j - 1; k <= j + 1; k++)
-                                {
-                                    buttons[m, k].Content = field[m, k].MineAround;
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (j == 0)
-                        {
-                            for (int m = i - 1; m <= i + 1; m++)
-                            {
-                                for (int k = j; k <= j + 1; k++)
-                                {
-                                    buttons[m, k].Content = field[m, k].MineAround;
-                                }
-                            }
-                        }
-                        else if (j == 9)
-                        {
-                            for (int m = i - 1; m <= i + 1; m++)
-                            {
-                                for (int k = j - 1; k <= j; k++)
-                                {
-                                    buttons[m, k].Content = field[m, k].MineAround;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            for (int m = i - 1; m <= i + 1; m++)
-                            {
-                                for (int k = j - 1; k <= j + 1; k++)
-                                {
-                                    buttons[m, k].Content = field[m, k].MineAround;
-                                }
-                            }
-                        }
-                    }
-                    #endregion
+                    MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                    this.Close();
                 }
-                buttons[i, j].Content = field[i, j].MineAround;         // Открываем клетку, на которую мы нажали
+                else                                                        // Если это не мина
+                {
+                    if (field[i, j].MineAround == 0)                        // И бомб вокруг ноль, то открываем клетки вокруг
+                    {
+                        #region Открытие других клеток
+                        if (i == 0)
+                        {
+                            if (j == 0)
+                            {
+                                for (int m = i; m <= i + 1; m++)
+                                {
+                                    for (int k = j; k <= j + 1; k++)
+                                    {
+                                        buttons[m, k].Content = field[m, k].MineAround;             // Открываем другие клетки
+                                    }
+                                }
+                            }
+                            else if (j == 9)
+                            {
+                                for (int m = i; m <= i + 1; m++)
+                                {
+                                    for (int k = j - 1; k <= j; k++)
+                                    {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int m = i; m <= i + 1; m++)
+                                {
+                                    for (int k = j - 1; k <= j + 1; k++)
+                                    {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    }
+                                }
+                            }
+                        }
+                        else if (i == 9)
+                        {
+                            if (j == 0)
+                            {
+                                for (int m = i - 1; m <= i; m++)
+                                {
+                                    for (int k = j; k <= j + 1; k++)
+                                    {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    }
+                                }
+                            }
+                            else if (j == 9)
+                            {
+                                for (int m = i - 1; m <= i; m++)
+                                {
+                                    for (int k = j - 1; k <= j; k++)
+                                    {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int m = i - 1; m <= i; m++)
+                                {
+                                    for (int k = j - 1; k <= j + 1; k++)
+                                    {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (j == 0)
+                            {
+                                for (int m = i - 1; m <= i + 1; m++)
+                                {
+                                    for (int k = j; k <= j + 1; k++)
+                                    {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    }
+                                }
+                            }
+                            else if (j == 9)
+                            {
+                                for (int m = i - 1; m <= i + 1; m++)
+                                {
+                                    for (int k = j - 1; k <= j; k++)
+                                    {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int m = i - 1; m <= i + 1; m++)
+                                {
+                                    for (int k = j - 1; k <= j + 1; k++)
+                                    {
+                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    }
+                                }
+                            }
+                        }
+                        #endregion
+                    }
+                    buttons[i, j].Content = field[i, j].MineAround;         // Открываем клетку, на которую мы нажали
+                }
+                #endregion
             }
-            #endregion
         }
     }
 }
