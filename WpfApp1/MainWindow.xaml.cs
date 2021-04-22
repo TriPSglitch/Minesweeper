@@ -65,6 +65,7 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            #region Нажатие на кнопку
             int i = Grid.GetRow((Button)sender), j = Grid.GetColumn((Button)sender);
             if (field[i, j].IsMine)                                     // Если кнопка, на которую мы нажали - мина
             {
@@ -179,6 +180,7 @@ namespace WpfApp1
                 }
                 buttons[i, j].Content = field[i, j].MineAround;         // Открываем клетку, на которую мы нажали
             }
+            #endregion
         }
     }
 }
