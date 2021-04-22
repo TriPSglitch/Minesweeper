@@ -12,10 +12,20 @@ namespace WpfApp1
     {
         Field[,] field = new Field[10, 10];                             // Создаём массив, размерностью поля
         Button[,] buttons = new Button[10, 10];                         // Создаю матрицу кнопок
+        Image BombImage = new Image
+        {
+            Source = new BitmapImage(new Uri(@"..\WpfApp1\Mine.jpg", UriKind.Relative))    // Выбираю изображение для мины
+        };
+        int ClickCount = 0;
+        Field fieldConstructor = new Field();                           // Делаем ещё экземпляр класса для взаимодействия с классом
+
 
         public MainWindow()
         {
             InitializeComponent();
+            int MineCount = fieldConstructor.MineCount;                 // Получаем количство мин
+            MineCounter.Content = Convert.ToString(MineCount);    // Вывожу кол-во мин
+
 
             #region Инициализация поля
             for (int i = 0; i < field.GetLength(0); i++)
@@ -25,46 +35,44 @@ namespace WpfApp1
                     field[i, j] = new Field();                          //
                 }                                                       //
             }
-
-
-            Field fieldConstructor = new Field();                           // Делаем ещё экземпляр класса для взаимодействия с классом
-
-
-            int MineCount = fieldConstructor.MineCount;                 // Получаем количство мин
-            fieldConstructor.Generate(field);                               // Вызываем генерацию поля
-
-
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 10; j++)
-                {
-                    fieldConstructor.MineAroundCounter(field, i, j);            // Прохожу по полю и получаю количество мин вокруг
-                }
-            }
-            #endregion
-
-
-            Image image = new Image();
-            image.Source = new BitmapImage(new Uri(@"C:\Users\gr692_pdo\source\repos\Minesweeper\WpfApp1\Icons\Mine.jpg"));    // Выбираю изображение для мины
-            MineCounter.Text = Convert.ToString(MineCount - fieldConstructor.MineCount);                                    // Вывожу кол-во мин
-
-
-            #region Жопа
-            foreach (UIElement item in FieldGrid.Children)                                              // Прохожу по матрице кнопок на форме
-            {
-                int i = Grid.GetRow(item), j = Grid.GetColumn(item);
-                buttons[i, j] = (Button)item;
-                /*if (field[i, j].IsMine)
-                    buttons[i, j].Content = image;                                          // Если кнопка это мина, то вывожу на кнопку картинку
-                else
-                    buttons[i, j].Content = field[i, j].MineAround;                         // Иначе вывожу на кнопку количество мин вокруг*/
-
-            }
             #endregion
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            #region Генерация поля после первого нажатия на любую клетку
+            ClickCount++;
+            if (ClickCount == 1)
+            {
+                fieldConstructor.Generate(field);                               // Вызываем генерацию поля
+
+
+                for (int m = 0; m < 10; m++)
+                {
+                    for (int k = 0; k < 10; k++)
+                    {
+                        fieldConstructor.MineAroundCounter(field, m, k);            // Прохожу по полю и получаю количество мин вокруг
+                    }
+                }
+
+
+                #region Заполнение кнопок
+                foreach (UIElement item in FieldGrid.Children)                                              // Прохожу по матрице кнопок на форме
+                {
+                    int m = Grid.GetRow(item), k = Grid.GetColumn(item);
+                    buttons[m, k] = (Button)item;
+                    if (field[m, k].IsMine)
+                        buttons[m, k].Content = BombImage;                                          // Если кнопка это мина, то вывожу на кнопку картинку
+                    else
+                        buttons[m, k].Content = field[m, k].MineAround;                         // Иначе вывожу на кнопку количество мин вокруг
+
+                }
+                #endregion
+            }
+            #endregion
+
+
             #region Нажатие на кнопку
             int i = Grid.GetRow((Button)sender), j = Grid.GetColumn((Button)sender);
             if (field[i, j].IsMine)                                     // Если кнопка, на которую мы нажали - мина
@@ -95,7 +103,7 @@ namespace WpfApp1
                             {
                                 for (int k = j - 1; k <= j; k++)
                                 {
-                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    buttons[m, k].Content = field[m, k].MineAround;
                                 }
                             }
                         }
@@ -105,7 +113,7 @@ namespace WpfApp1
                             {
                                 for (int k = j - 1; k <= j + 1; k++)
                                 {
-                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    buttons[m, k].Content = field[m, k].MineAround;
                                 }
                             }
                         }
@@ -118,7 +126,7 @@ namespace WpfApp1
                             {
                                 for (int k = j; k <= j + 1; k++)
                                 {
-                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    buttons[m, k].Content = field[m, k].MineAround;
                                 }
                             }
                         }
@@ -128,7 +136,7 @@ namespace WpfApp1
                             {
                                 for (int k = j - 1; k <= j; k++)
                                 {
-                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    buttons[m, k].Content = field[m, k].MineAround;
                                 }
                             }
                         }
@@ -138,7 +146,7 @@ namespace WpfApp1
                             {
                                 for (int k = j - 1; k <= j + 1; k++)
                                 {
-                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    buttons[m, k].Content = field[m, k].MineAround;
                                 }
                             }
                         }
@@ -151,7 +159,7 @@ namespace WpfApp1
                             {
                                 for (int k = j; k <= j + 1; k++)
                                 {
-                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    buttons[m, k].Content = field[m, k].MineAround;
                                 }
                             }
                         }
@@ -161,7 +169,7 @@ namespace WpfApp1
                             {
                                 for (int k = j - 1; k <= j; k++)
                                 {
-                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    buttons[m, k].Content = field[m, k].MineAround;
                                 }
                             }
                         }
@@ -171,7 +179,7 @@ namespace WpfApp1
                             {
                                 for (int k = j - 1; k <= j + 1; k++)
                                 {
-                                        buttons[m, k].Content = field[m, k].MineAround;
+                                    buttons[m, k].Content = field[m, k].MineAround;
                                 }
                             }
                         }

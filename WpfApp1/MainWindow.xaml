@@ -133,8 +133,7 @@
             <Button Grid.Column="9" Grid.Row="8" Click="Button_Click"/>
             <Button Grid.Column="9" Grid.Row="9" Click="Button_Click"/>
         </Grid>
-        <Label HorizontalAlignment="Left" Margin="438,98,0,0" VerticalAlignment="Top" Height="29" Width="110" Content="Количество мин:">
-        </Label>
-        <TextBox x:Name="MineCounter" Height="23" TextWrapping="Wrap" Text="" Margin="539,102,221,294"/>
+        <Label HorizontalAlignment="Left" Margin="438,98,0,0" VerticalAlignment="Top" Height="29" Width="110" Content="Количество мин:"/>
+        <Label x:Name="MineCounter" Margin="539,98,221,289" RenderTransformOrigin="0.495,0.088"/>
     </Grid>
 </Window>

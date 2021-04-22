@@ -9,7 +9,7 @@ namespace FieldSpace
     {
         Random rnd = new Random();
         public bool IsMine { get; set; } = false;       // Ячейка имеет состояние мины и нет
-        public int MineCount { get; set; } = 10;        // Количсетво мин на поле
+        public int MineCount { get; set; } = 70;        // Количсетво мин на поле
         public int MineAround { get; set; } = 0;        // количество мин вокруг
         public bool IsOpen { get; set; } = false;
         public void Generate(Field[,] field)            // Метод для генерации поля
