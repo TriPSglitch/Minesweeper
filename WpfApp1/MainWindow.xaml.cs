@@ -13,9 +13,9 @@ namespace WpfApp1
     {
         Field[,] field = new Field[10, 10];                             // Создаём массив, размерностью поля
         Button[,] buttons = new Button[10, 10];                         // Создаю матрицу кнопок
-        Image BombImage = new Image
+        Image FlagImage = new Image
         {
-            Source = new BitmapImage(new Uri(@"..\WpfApp1\Mine.jpg", UriKind.Relative))    // Выбираю изображение для мины
+            Source = new BitmapImage(new Uri(@"..\WpfApp1\flag_icon.png", UriKind.RelativeOrAbsolute))    // Выбираю изображение для мины
         };
         int ClickCount = 0;
         Field fieldConstructor = new Field();                           // Делаем ещё экземпляр класса для взаимодействия с классом
@@ -64,10 +64,10 @@ namespace WpfApp1
                 {
                     int m = Grid.GetRow(item), k = Grid.GetColumn(item);
                     buttons[m, k] = (Button)item;
-                    if (field[m, k].IsMine)
-                        buttons[m, k].Content = BombImage;                                      // Если кнопка это мина, то вывожу на кнопку картинку
+                    /*if (field[m, k].IsMine)
+                        buttons[m, k].Content = "";                                      // Если кнопка это мина, то вывожу на кнопку картинку
                     else
-                        buttons[m, k].Content = field[m, k].MineAround;                         // Иначе вывожу на кнопку количество мин вокруг
+                        buttons[m, k].Content = field[m, k].MineAround;                         // Иначе вывожу на кнопку количество мин вокруг*/
 
                 }
                 #endregion
@@ -79,12 +79,12 @@ namespace WpfApp1
                 #region Нажатие на кнопку в обычном режиме
                 if (!GameManager.IsSettingFlags)                                // Если не выбран режим установки флагов
                 {
-                    if (field[i, j].IsMine)                                     // Если кнопка, на которую мы нажали - мина
+                    if (field[i, j].IsMine && !field[i, j].IsFlagged)           // Если кнопка, на которую мы нажали - мина и она не помечена
                     {
                         MessageBox.Show("Вы проиграли");                        // То мы проигрываем
                         this.Close();
                     }
-                    else if (field[i, j].IsMine && !field[i, j].IsFlagged)      // Если это не мина и клетка не помечена флагом
+                    else if (!field[i, j].IsMine && !field[i, j].IsFlagged)     // Если это не мина и клетка не помечена флагом
                     {
                         if (field[i, j].MineAround == 0)                        // И бомб вокруг ноль, то открываем клетки вокруг
                         {
@@ -98,6 +98,7 @@ namespace WpfApp1
                                         for (int k = j; k <= j + 1; k++)
                                         {
                                             buttons[m, k].Content = field[m, k].MineAround;             // Открываем другие клетки
+                                            field[m, k].IsOpen = true;
                                         }
                                     }
                                 }
@@ -108,6 +109,7 @@ namespace WpfApp1
                                         for (int k = j - 1; k <= j; k++)
                                         {
                                             buttons[m, k].Content = field[m, k].MineAround;
+                                            field[m, k].IsOpen = true;
                                         }
                                     }
                                 }
@@ -118,6 +120,7 @@ namespace WpfApp1
                                         for (int k = j - 1; k <= j + 1; k++)
                                         {
                                             buttons[m, k].Content = field[m, k].MineAround;
+                                            field[m, k].IsOpen = true;
                                         }
                                     }
                                 }
@@ -131,6 +134,7 @@ namespace WpfApp1
                                         for (int k = j; k <= j + 1; k++)
                                         {
                                             buttons[m, k].Content = field[m, k].MineAround;
+                                            field[m, k].IsOpen = true;
                                         }
                                     }
                                 }
@@ -141,6 +145,7 @@ namespace WpfApp1
                                         for (int k = j - 1; k <= j; k++)
                                         {
                                             buttons[m, k].Content = field[m, k].MineAround;
+                                            field[m, k].IsOpen = true;
                                         }
                                     }
                                 }
@@ -151,6 +156,7 @@ namespace WpfApp1
                                         for (int k = j - 1; k <= j + 1; k++)
                                         {
                                             buttons[m, k].Content = field[m, k].MineAround;
+                                            field[m, k].IsOpen = true;
                                         }
                                     }
                                 }
@@ -164,6 +170,7 @@ namespace WpfApp1
                                         for (int k = j; k <= j + 1; k++)
                                         {
                                             buttons[m, k].Content = field[m, k].MineAround;
+                                            field[m, k].IsOpen = true;
                                         }
                                     }
                                 }
@@ -174,6 +181,7 @@ namespace WpfApp1
                                         for (int k = j - 1; k <= j; k++)
                                         {
                                             buttons[m, k].Content = field[m, k].MineAround;
+                                            field[m, k].IsOpen = true;
                                         }
                                     }
                                 }
@@ -184,6 +192,7 @@ namespace WpfApp1
                                         for (int k = j - 1; k <= j + 1; k++)
                                         {
                                             buttons[m, k].Content = field[m, k].MineAround;
+                                            field[m, k].IsOpen = true;
                                         }
                                     }
                                 }
@@ -191,6 +200,7 @@ namespace WpfApp1
                             #endregion
                         }
                         buttons[i, j].Content = field[i, j].MineAround;         // Открываем клетку, на которую мы нажали
+                        field[i, j].IsOpen = true;
                     }
                 }
                 #endregion
@@ -201,7 +211,7 @@ namespace WpfApp1
                     #region Пометка клетки
                     if (!field[i, j].IsFlagged)                                 // Если клетка не помечена
                     {
-                        buttons[i, j].Content = 'X';                            // Помечаю
+                        buttons[i, j].Content = FlagImage;
                         if (field[i, j].IsMine)                                 // Если это мина
                         {
                             MineFlagged++;                                      // То прибавляю к количеству помеченных мин
@@ -210,7 +220,7 @@ namespace WpfApp1
                         else if (!field[i, j].IsMine)                           // Если это не мина
                         {
                             OtherCellsFlagged++;                                // То прибавляю к количеству помеченных других клеток
-                            field[i, j].IsFlagged = true;
+                            field[i, j].IsFlagged = true;                       // Помечаю клетку
                         }
                     }
                     #endregion
@@ -228,6 +238,8 @@ namespace WpfApp1
                         {
                             OtherCellsFlagged--;                                // То убавляю количество помеченных других клеток
                             field[i, j].IsFlagged = false;                      // Убираю пометку с клетки
+                            if (field[i, j].IsOpen)                             // Если клетка уже была открыта
+                                buttons[i, j].Content = field[i, j].MineAround; // Вывести количество мин вокруг
                         }
                     }
                     #endregion

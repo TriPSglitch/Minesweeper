@@ -12,6 +12,7 @@ namespace FieldSpace
         public static int MineCount { get; set; } = 10;        // Количсетво мин на поле
         public int MineAround { get; set; } = 0;               // количество мин вокруг
         public bool IsFlagged { get; set; } = false;           // Для проверки установлен ли флаг на клетку
+        public bool IsOpen { get; set; } = false;              // Для того, чтобы показывать количество мин вокруг при снятии флага, если клетка уже была открыта
         public void Generate(Field[,] field)                   // Метод для генерации поля
         {
             #region Генерация поля

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="331" Width="448" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid x:Name ="FieldGrid" HorizontalAlignment="Left" Height="200" Margin="32,83,0,0" VerticalAlignment="Top" Width="200">
             <Grid.RowDefinitions>
@@ -133,8 +133,8 @@
             <Button Grid.Column="9" Grid.Row="8" Click="ClickOnField"/>
             <Button Grid.Column="9" Grid.Row="9" Click="ClickOnField"/>
         </Grid>
-        <Label HorizontalAlignment="Left" Margin="438,98,0,0" VerticalAlignment="Top" Height="29" Width="110" Content="Количество мин:"/>
-        <Label x:Name="MineCounter" Margin="539,98,221,289" RenderTransformOrigin="0.495,0.088"/>
-        <Button Content="Флаг" HorizontalAlignment="Left" Height="32" Margin="32,31,0,0" VerticalAlignment="Top" Width="55" Click="SettingFlags"/>
+        <Label HorizontalAlignment="Left" Margin="260,30,0,0" VerticalAlignment="Top" Height="29" Width="110" Content="Количество мин:"/>
+        <Label x:Name="MineCounter" Margin="361,30,9,235" RenderTransformOrigin="0.495,0.088"/>
+        <Button Content="Флаг" HorizontalAlignment="Left" Height="32" Margin="32,31,0,0" VerticalAlignment="Top" Width="200" Click="SettingFlags"/>
     </Grid>
 </Window>
