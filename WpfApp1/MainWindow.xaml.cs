@@ -211,8 +211,8 @@ namespace WpfApp1
                     #region Пометка клетки
                     if (!field[i, j].IsFlagged)                                 // Если клетка не помечена
                     {
-                        //buttons[i, j].Content = FlagImage;
-                        buttons[i, j].Content = 'X';
+                        buttons[i, j].Content = FlagImage;
+                        //buttons[i, j].Content = 'X';
                         if (field[i, j].IsMine)                                 // Если это мина
                         {
                             MineFlagged++;                                      // То прибавляю к количеству помеченных мин
