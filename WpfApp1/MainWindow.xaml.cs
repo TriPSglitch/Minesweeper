@@ -22,13 +22,14 @@ namespace WpfApp1
         Field fieldConstructor = new Field();                           // Делаем ещё экземпляр класса для взаимодействия с классом
         int MineCount = Field.MineCount;                                // Получаем количство мин
         int MineFlagged = 0, OtherCellsFlagged = 0;                     // Количество помеченных мин и помеченных других клеток
+        int FlagCount = 0;                                              // Подсчёт количества поставленных флагов
 
 
         public MainWindow()
         {
             InitializeComponent();
             MineCounter.Content = Convert.ToString(MineCount);          // Вывожу кол-во мин
-
+            FlagsCounter.Content = Convert.ToString(FlagCount);         // Вывожу количество поставленных влагов
 
             #region Инициализация поля
             for (int i = 0; i < field.GetLength(0); i++)
@@ -213,6 +214,8 @@ namespace WpfApp1
                     if (!field[i, j].IsFlagged)                                 // Если клетка не помечена
                     {
                         buttons[i, j].Content = FlagImage;
+                        FlagCount++;
+                        FlagsCounter.Content = Convert.ToString(FlagCount);
                         //buttons[i, j].Content = 'X';
                         if (field[i, j].IsMine)                                 // Если это мина
                         {
@@ -231,6 +234,8 @@ namespace WpfApp1
                     else                                                        // Если клетка помечена
                     {
                         buttons[i, j].Content = "";                             // Убираю пометку с клетки
+                        FlagCount--;
+                        FlagsCounter.Content = Convert.ToString(FlagCount);
                         if (field[i, j].IsMine)                                 // Если это мина
                         {
                             MineFlagged--;                                      // То убавляю количество помеченных мин
