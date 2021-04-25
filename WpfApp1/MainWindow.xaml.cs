@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using FieldSpace;
 using GameManagement;
@@ -15,7 +16,7 @@ namespace WpfApp1
         Button[,] buttons = new Button[10, 10];                         // Создаю матрицу кнопок
         Image FlagImage = new Image
         {
-            Source = new BitmapImage(new Uri(@"..\WpfApp1\flag_icon.png", UriKind.RelativeOrAbsolute))    // Выбираю изображение для мины
+            Source = new BitmapImage(new Uri(@"C:\Users\Максим\source\repos\Minesweeper\WpfApp1\Icons\flag_icon.png", UriKind.RelativeOrAbsolute))    // Выбираю изображение для мины
         };
         int ClickCount = 0;
         Field fieldConstructor = new Field();                           // Делаем ещё экземпляр класса для взаимодействия с классом
@@ -261,6 +262,13 @@ namespace WpfApp1
         private void SettingFlags(object sender, RoutedEventArgs e)             // Включение и отключение режима флага
         {
             GameManager.IsSettingFlags = !GameManager.IsSettingFlags;
+
+            #region Смена цвета для кнопки флага
+            if (GameManager.IsSettingFlags)
+                FlagButton.Background = Brushes.Red;
+            else
+                FlagButton.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            #endregion
         }
     }
 }
