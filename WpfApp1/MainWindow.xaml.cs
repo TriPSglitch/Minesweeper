@@ -213,10 +213,13 @@ namespace WpfApp1
                     #region Пометка клетки
                     if (!field[i, j].IsFlagged)                                 // Если клетка не помечена
                     {
-                        buttons[i, j].Content = FlagImage;
+                        //buttons[i, j].Content = FlagImage;                    //
+                        //buttons[i, j].Content = 'X';                          // Пометка кнопки флагом
+                        buttons[i, j].Background = Brushes.Red;                 //
+
+
                         FlagCount++;
                         FlagsCounter.Content = Convert.ToString(FlagCount);
-                        //buttons[i, j].Content = 'X';
                         if (field[i, j].IsMine)                                 // Если это мина
                         {
                             MineFlagged++;                                      // То прибавляю к количеству помеченных мин
@@ -233,7 +236,10 @@ namespace WpfApp1
                     #region Снятие пометки с клетки
                     else                                                        // Если клетка помечена
                     {
-                        buttons[i, j].Content = "";                             // Убираю пометку с клетки
+                        buttons[i, j].Content = "";                                                     // Убираю пометку с клетки
+                        buttons[i, j].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));   // Снятие флага с кнопки
+
+
                         FlagCount--;
                         FlagsCounter.Content = Convert.ToString(FlagCount);
                         if (field[i, j].IsMine)                                 // Если это мина
