@@ -16,7 +16,7 @@ namespace WpfApp1
         Button[,] buttons = new Button[10, 10];                         // Создаю матрицу кнопок
         Image FlagImage = new Image
         {
-            Source = new BitmapImage(new Uri(@"C:\Users\TEMP.TTIT.000.001.002.003\Source\Repos\Minesweeper\WpfApp1\Icons\flag_icon.png", UriKind.RelativeOrAbsolute))    // Выбираю изображение для мины
+            Source = new BitmapImage(new Uri(@"C:\Users\Максим\Source\Repos\Minesweeper\WpfApp1\Icons\flag_icon.png", UriKind.RelativeOrAbsolute))    // Выбираю изображение для мины
         };
         int ClickCount = 0;
         Field fieldConstructor = new Field();                           // Делаем ещё экземпляр класса для взаимодействия с классом
@@ -220,7 +220,7 @@ namespace WpfApp1
             #endregion
 
             #region Нажатие на кнопку в режиме флага
-            else                                                            // Если выбран режим установки флагов
+            else if (GameManager.IsSettingFlags && !field[i, j].IsOpen)      // Если выбран режим установки флагов
             {
                 #region Пометка клетки
                 if (!field[i, j].IsFlagged)                                 // Если клетка не помечена
