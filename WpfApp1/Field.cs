@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace FieldSpace
 {
@@ -213,6 +215,23 @@ namespace FieldSpace
                     }
                 }
             }
+            #endregion
+        }
+        public void Color(Field[,] field, Button[,] buttons, int i, int j)      // Метод, который меняет цвет текста кнопки
+        {
+            #region Установление цвета текста
+            if (field[i, j].MineAround == 1)
+                buttons[i, j].Foreground = Brushes.Blue;
+            else if (field[i, j].MineAround == 2)
+                buttons[i, j].Foreground = Brushes.Green;
+            else if (field[i, j].MineAround == 3)
+                buttons[i, j].Foreground = Brushes.Red;
+            else if (field[i, j].MineAround == 4)
+                buttons[i, j].Foreground = Brushes.DarkBlue;
+            else if (field[i, j].MineAround == 5)
+                buttons[i, j].Foreground = Brushes.DarkRed;
+            else if (field[i, j].MineAround == 6)
+                buttons[i, j].Foreground = Brushes.DarkGreen;
             #endregion
         }
     }

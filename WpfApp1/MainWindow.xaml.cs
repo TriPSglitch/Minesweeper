@@ -102,6 +102,7 @@ namespace WpfApp1
                                     for (int k = j; k <= j + 1; k++)
                                     {
                                         buttons[m, k].Content = field[m, k].MineAround;             // Открываем другие клетки
+                                        fieldConstructor.Color(field, buttons, m, k);
                                         field[m, k].IsOpen = true;
                                     }
                                 }
@@ -113,6 +114,7 @@ namespace WpfApp1
                                     for (int k = j - 1; k <= j; k++)
                                     {
                                         buttons[m, k].Content = field[m, k].MineAround;
+                                        fieldConstructor.Color(field, buttons, m, k);
                                         field[m, k].IsOpen = true;
                                     }
                                 }
@@ -124,6 +126,7 @@ namespace WpfApp1
                                     for (int k = j - 1; k <= j + 1; k++)
                                     {
                                         buttons[m, k].Content = field[m, k].MineAround;
+                                        fieldConstructor.Color(field, buttons, m, k);
                                         field[m, k].IsOpen = true;
                                     }
                                 }
@@ -138,6 +141,7 @@ namespace WpfApp1
                                     for (int k = j; k <= j + 1; k++)
                                     {
                                         buttons[m, k].Content = field[m, k].MineAround;
+                                        fieldConstructor.Color(field, buttons, m, k);
                                         field[m, k].IsOpen = true;
                                     }
                                 }
@@ -149,6 +153,7 @@ namespace WpfApp1
                                     for (int k = j - 1; k <= j; k++)
                                     {
                                         buttons[m, k].Content = field[m, k].MineAround;
+                                        fieldConstructor.Color(field, buttons, m, k);
                                         field[m, k].IsOpen = true;
                                     }
                                 }
@@ -160,6 +165,7 @@ namespace WpfApp1
                                     for (int k = j - 1; k <= j + 1; k++)
                                     {
                                         buttons[m, k].Content = field[m, k].MineAround;
+                                        fieldConstructor.Color(field, buttons, m, k);
                                         field[m, k].IsOpen = true;
                                     }
                                 }
@@ -174,6 +180,7 @@ namespace WpfApp1
                                     for (int k = j; k <= j + 1; k++)
                                     {
                                         buttons[m, k].Content = field[m, k].MineAround;
+                                        fieldConstructor.Color(field, buttons, m, k);
                                         field[m, k].IsOpen = true;
                                     }
                                 }
@@ -185,6 +192,7 @@ namespace WpfApp1
                                     for (int k = j - 1; k <= j; k++)
                                     {
                                         buttons[m, k].Content = field[m, k].MineAround;
+                                        fieldConstructor.Color(field, buttons, m, k);
                                         field[m, k].IsOpen = true;
                                     }
                                 }
@@ -196,6 +204,7 @@ namespace WpfApp1
                                     for (int k = j - 1; k <= j + 1; k++)
                                     {
                                         buttons[m, k].Content = field[m, k].MineAround;
+                                        fieldConstructor.Color(field, buttons, m, k);
                                         field[m, k].IsOpen = true;
                                     }
                                 }
@@ -204,6 +213,7 @@ namespace WpfApp1
                         #endregion
                     }
                     buttons[i, j].Content = field[i, j].MineAround;         // Открываем клетку, на которую мы нажали
+                    fieldConstructor.Color(field, buttons, i, j);           // Устанавливаем соответствующий цвет текста кнопки
                     field[i, j].IsOpen = true;
                 }
             }
