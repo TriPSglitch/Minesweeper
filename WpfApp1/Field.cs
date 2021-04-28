@@ -25,7 +25,7 @@ namespace FieldSpace
 
 
                 #region Делаем вокруг клетки 0 бомб    
-                if (temp == k)                                 // Пропускаем клетки вокруг той, на которую мы нажали первой
+                if (temp == k && i == m)                        // Пропускаем клетки вокруг той, на которую мы нажали первой
                 {
                     continue;
                 }
@@ -35,17 +35,17 @@ namespace FieldSpace
                     {
                         if (k == 0)
                         {
-                            if ((temp == k && i == m + 1) || (temp == k + 1 && i == m + 1) || (temp == k + 1))
+                            if ((temp == k && i == m + 1) || (temp == k + 1 && i == m + 1) || (temp == k + 1 && i == m))
                                 continue;
                         }
                         else if (k == 9)
                         {
-                            if ((temp == k && i == m + 1) || (temp == k - 1 && i == m + 1) || (temp == k - 1))
+                            if ((temp == k && i == m + 1) || (temp == k - 1 && i == m + 1) || (temp == k - 1 && i == m))
                                 continue;
                         }
                         else
                         {
-                            if ((temp == k && i == m + 1) || (temp == k - 1 && i == m + 1) || (temp == k + 1 && i == m + 1) || (temp == k - 1) || (temp == k + 1))
+                            if ((temp == k && i == m + 1) || (temp == k - 1 && i == m + 1) || (temp == k + 1 && i == m + 1) || (temp == k - 1 && i == m) || (temp == k + 1 && i == m))
                                 continue;
                         }
                     }
@@ -53,17 +53,17 @@ namespace FieldSpace
                     {
                         if (k == 0)
                         {
-                            if ((temp == k && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k + 1))
+                            if ((temp == k && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k + 1 && i == m))
                                 continue;
                         }
                         else if (k == 9)
                         {
-                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k - 1))
+                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k - 1 && i == m))
                                 continue;
                         }
                         else
                         {
-                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k - 1) || (temp == k + 1))
+                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k - 1 && i == m) || (temp == k + 1 && i == m))
                                 continue;
                         }
                     }
@@ -71,17 +71,17 @@ namespace FieldSpace
                     {
                         if (k == 0)
                         {
-                            if ((temp == k && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k + 1) || (temp == k && i == m + 1) || (temp == k + 1 && i == m + 1))
+                            if ((temp == k && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k + 1 && i == m) || (temp == k && i == m + 1) || (temp == k + 1 && i == m + 1))
                                 continue;
                         }
                         else if (k == 9)
                         {
-                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k - 1) || (temp == k && i == m + 1) || (temp == k - 1 && i == m + 1))
+                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k - 1 && i == m) || (temp == k && i == m + 1) || (temp == k - 1 && i == m + 1))
                                 continue;
                         }
                         else
                         {
-                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k - 1) || (temp == k + 1)
+                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k - 1 && i == m) || (temp == k + 1 && i == m)
                                 || (temp == k && i == m + 1) || (temp == k - 1 && i == m + 1) || (temp == k + 1 && i == m + 1))
                                 continue;
                         }
@@ -95,7 +95,7 @@ namespace FieldSpace
                     temp = 0;                                                           // Проходим строку с начала и ищем место для мины
                     while (field[i, temp].IsMine && temp <= field.GetLength(0))
                     {
-                        if (temp == field.GetLength(0) - 1)
+                        if (temp == field.GetLength(0) - 1 && i == m)
                         {
                             i++;                                                        // Если строка закончилась, то переходим на следующую
                             temp = 0;
