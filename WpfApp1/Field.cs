@@ -24,58 +24,67 @@ namespace FieldSpace
                 int temp = rnd.Next(0, field.GetLength(0));                             // Получаем положение мины
 
 
-                #region Делаем вокруг клетки 0 бомб                         
-                if (k == 0)                                                 // Пропускаем клетки вокруг той, на которую мы нажали первой
+                #region Делаем вокруг клетки 0 бомб    
+                if (temp == k)                                 // Пропускаем клетки вокруг той, на которую мы нажали первой
                 {
-                    if (temp == k || temp == k + 1)
-                        continue;
-                }
-                else if (k == 9)
-                {
-                    if (temp == k || temp == k - 1)
-                        continue;
+                    continue;
                 }
                 else
                 {
-                    if (temp == k || temp == k - 1 || temp == k + 1)
-                        continue;
-                }
-
-
-                if (i == 0)
-                {
-                    if (k == 0)
+                    if (i == 0)
                     {
-                        if ((temp == k && i == m + 1) || (temp == k + 1 && i == m + 1))
-                            continue;
+                        if (k == 0)
+                        {
+                            if ((temp == k && i == m + 1) || (temp == k + 1 && i == m + 1) || (temp == k + 1))
+                                continue;
+                        }
+                        else if (k == 9)
+                        {
+                            if ((temp == k && i == m + 1) || (temp == k - 1 && i == m + 1) || (temp == k - 1))
+                                continue;
+                        }
+                        else
+                        {
+                            if ((temp == k && i == m + 1) || (temp == k - 1 && i == m + 1) || (temp == k + 1 && i == m + 1) || (temp == k - 1) || (temp == k + 1))
+                                continue;
+                        }
                     }
-                    else if (k == 9)
+                    else if (i == 9)
                     {
-                        if ((temp == k && i == m + 1) || (temp == k - 1 && i == m + 1))
-                            continue;
+                        if (k == 0)
+                        {
+                            if ((temp == k && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k + 1))
+                                continue;
+                        }
+                        else if (k == 9)
+                        {
+                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k - 1))
+                                continue;
+                        }
+                        else
+                        {
+                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k - 1) || (temp == k + 1))
+                                continue;
+                        }
                     }
                     else
                     {
-                        if ((temp == k && i == m + 1) || (temp == k - 1 && i == m + 1) || (temp == k + 1 && i == m + 1))
-                            continue;
-                    }
-                }
-                else if (i == 9)
-                {
-                    if (k == 0)
-                    {
-                        if ((temp == k && i == m - 1) || (temp == k + 1 && i == m - 1))
-                            continue;
-                    }
-                    else if (k == 9)
-                    {
-                        if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1))
-                            continue;
-                    }
-                    else
-                    {
-                        if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k + 1 && i == m - 1))
-                            continue;
+                        if (k == 0)
+                        {
+                            if ((temp == k && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k + 1) || (temp == k && i == m + 1) || (temp == k + 1 && i == m + 1))
+                                continue;
+                        }
+                        else if (k == 9)
+                        {
+                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k - 1) || (temp == k && i == m + 1) || (temp == k - 1 && i == m + 1))
+                                continue;
+                        }
+                        else
+                        {
+                            if ((temp == k && i == m - 1) || (temp == k - 1 && i == m - 1) || (temp == k + 1 && i == m - 1) || (temp == k - 1) || (temp == k + 1)
+                                || (temp == k && i == m + 1) || (temp == k - 1 && i == m + 1) || (temp == k + 1 && i == m + 1))
+                                continue;
+                        }
                     }
                 }
                 #endregion
