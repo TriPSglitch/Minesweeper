@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Threading.Tasks;
 
 namespace FieldSpace
 {
@@ -23,7 +24,7 @@ namespace FieldSpace
                 int tempI = i;                                                          // Сохраняем начальную строку
                 int temp = rnd.Next(0, field.GetLength(0));                             // Получаем положение мины
 
-                
+
                 /*Сранная хрень, я с тетрадкой сидел и проверял, в итоге
                 не должны быть ближайшие клетки минами, потому что я всё предусмотрел,
                 но нет, мало того, что всё равно вокруг могут быть мины,
@@ -119,6 +120,7 @@ namespace FieldSpace
                 Generate(field, m, k);
             #endregion
         }
+
         public void MineAroundCounter(Field[,] field, int i, int j)             // Метод, который считает количество мин вокруг
         {
             #region Количество мин вокруг
@@ -232,6 +234,7 @@ namespace FieldSpace
             }
             #endregion
         }
+
         public void Color(Field[,] field, Button[,] buttons, int i, int j)      // Метод, который меняет цвет текста кнопки
         {
             #region Установление цвета текста
@@ -247,6 +250,172 @@ namespace FieldSpace
                 buttons[i, j].Foreground = Brushes.DarkRed;
             else if (field[i, j].MineAround == 6)
                 buttons[i, j].Foreground = Brushes.DarkGreen;
+            #endregion
+        }
+
+        public void OpenZero(Field[,] field, Button[,] buttons, int i, int j)
+        {
+            #region Открытие других клеток
+            if (i == 0)
+            {
+                if (j == 0)
+                {
+                    for (int m = i; m <= i + 1; m++)
+                    {
+                        for (int k = j; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen)
+                                continue;
+                            buttons[m, k].Content = field[m, k].MineAround;             // Открываем другие клетки
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            /*if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                        }
+                    }
+                }
+                else if (j == 9)
+                {
+                    for (int m = i; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j; k++)
+                        {
+                            if (field[m, k].IsOpen)
+                                continue;
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            /*if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                        }
+                    }
+                }
+                else
+                {
+                    for (int m = i; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen)
+                                continue;
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            /*if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                        }
+                    }
+                }
+            }
+            else if (i == 9)
+            {
+                if (j == 0)
+                {
+                    for (int m = i - 1; m <= i; m++)
+                    {
+                        for (int k = j; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen)
+                                continue;
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            /*if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                        }
+                    }
+                }
+                else if (j == 9)
+                {
+                    for (int m = i - 1; m <= i; m++)
+                    {
+                        for (int k = j - 1; k <= j; k++)
+                        {
+                            if (field[m, k].IsOpen)
+                                continue;
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            /*if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                        }
+                    }
+                }
+                else
+                {
+                    for (int m = i - 1; m <= i; m++)
+                    {
+                        for (int k = j - 1; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen)
+                                continue;
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            /*if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (j == 0)
+                {
+                    for (int m = i - 1; m <= i + 1; m++)
+                    {
+                        for (int k = j; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen)
+                                continue;
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            /*if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                        }
+                    }
+                }
+                else if (j == 9)
+                {
+                    for (int m = i - 1; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j; k++)
+                        {
+                            if (field[m, k].IsOpen)
+                                continue;
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            /*if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                        }
+                    }
+                }
+                else
+                {
+                    for (int m = i - 1; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen)
+                                continue;
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            /*if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                        }
+                    }
+                }
+            }
+            #endregion
+        }
+
+        public async void OpenZeroAsync(Field[,] field, Button[,] buttons, int i, int j)    // Метод для асинхронного открытия клеток с нулём мин вокруг
+        {
+            #region Асинхронное открытие клеток с нулём мин вокруг
+            await Task.Run(() => OpenZero(field, buttons, i, j));
             #endregion
         }
     }
