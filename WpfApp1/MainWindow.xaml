@@ -338,5 +338,6 @@
         <Button Name="FlagButton" Content="Флаг" HorizontalAlignment="Left" Height="32" Margin="32,31,0,0" VerticalAlignment="Top" Width="200" Click="SettingFlags"/>
         <Label HorizontalAlignment="Left" Margin="260,53,0,0" VerticalAlignment="Top" Height="44" Width="155" Content="Количество поставленных &#xD;&#xA;флагов:"/>
         <Label x:Name="FlagsCounter" Margin="312,68,58,196" RenderTransformOrigin="0.495,0.088"/>
+        <Button Content="Перезагрузка" HorizontalAlignment="Left" Margin="329,243,0,0" VerticalAlignment="Top" Width="92" Height="42" Click="Reload"/>
     </Grid>
 </Window>

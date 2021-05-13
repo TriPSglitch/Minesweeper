@@ -174,5 +174,12 @@ namespace WpfApp1
                 FlagButton.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
             #endregion
         }
+
+        private void Reload(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
+        }               // Перезагрузка
     }
 }
