@@ -86,7 +86,6 @@ namespace WpfApp1
                 if (field[i, j].IsMine && !field[i, j].IsFlagged)           // Если кнопка, на которую мы нажали - мина и она не помечена
                 {
                     MessageBox.Show("Вы проиграли");                        // То мы проигрываем
-                    this.Close();
                 }
                 else if (!field[i, j].IsMine && !field[i, j].IsFlagged)     // Если это не мина и клетка не помечена флагом
                 {
@@ -156,7 +155,6 @@ namespace WpfApp1
                 if (MineFlagged == MineCount && OtherCellsFlagged == 0)     // Если количество помеченных мин = изначальному количеству мин и нет помеченных других клеток
                 {
                     MessageBox.Show("Вы победили");                         // То игрок побеждает
-                    this.Close();
                 }
                 #endregion
             }
@@ -175,11 +173,12 @@ namespace WpfApp1
             #endregion
         }
 
-        private void Reload(object sender, RoutedEventArgs e)
+        private void Reload(object sender, RoutedEventArgs e)                   // Перезагрузка
         {
-            MainWindow mw = new MainWindow();
-            mw.Show();
-            this.Close();
-        }               // Перезагрузка
+            #region Перезагрузка
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+            #endregion
+        }
     }
 }

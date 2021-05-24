@@ -269,8 +269,8 @@ namespace FieldSpace
                             buttons[m, k].Content = field[m, k].MineAround;             // Открываем другие клетки
                             field[m, k].Color(field, buttons, m, k);
                             field[m, k].IsOpen = true;
-                            /*if (field[m, k].MineAround == 0)
-                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
                         }
                     }
                 }
@@ -285,8 +285,8 @@ namespace FieldSpace
                             buttons[m, k].Content = field[m, k].MineAround;
                             field[m, k].Color(field, buttons, m, k);
                             field[m, k].IsOpen = true;
-                            /*if (field[m, k].MineAround == 0)
-                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
                         }
                     }
                 }
@@ -301,8 +301,8 @@ namespace FieldSpace
                             buttons[m, k].Content = field[m, k].MineAround;
                             field[m, k].Color(field, buttons, m, k);
                             field[m, k].IsOpen = true;
-                            /*if (field[m, k].MineAround == 0)
-                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
                         }
                     }
                 }
@@ -320,8 +320,8 @@ namespace FieldSpace
                             buttons[m, k].Content = field[m, k].MineAround;
                             field[m, k].Color(field, buttons, m, k);
                             field[m, k].IsOpen = true;
-                            /*if (field[m, k].MineAround == 0)
-                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
                         }
                     }
                 }
@@ -336,8 +336,8 @@ namespace FieldSpace
                             buttons[m, k].Content = field[m, k].MineAround;
                             field[m, k].Color(field, buttons, m, k);
                             field[m, k].IsOpen = true;
-                            /*if (field[m, k].MineAround == 0)
-                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
                         }
                     }
                 }
@@ -352,8 +352,8 @@ namespace FieldSpace
                             buttons[m, k].Content = field[m, k].MineAround;
                             field[m, k].Color(field, buttons, m, k);
                             field[m, k].IsOpen = true;
-                            /*if (field[m, k].MineAround == 0)
-                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
                         }
                     }
                 }
@@ -371,8 +371,8 @@ namespace FieldSpace
                             buttons[m, k].Content = field[m, k].MineAround;
                             field[m, k].Color(field, buttons, m, k);
                             field[m, k].IsOpen = true;
-                            /*if (field[m, k].MineAround == 0)
-                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
                         }
                     }
                 }
@@ -387,8 +387,8 @@ namespace FieldSpace
                             buttons[m, k].Content = field[m, k].MineAround;
                             field[m, k].Color(field, buttons, m, k);
                             field[m, k].IsOpen = true;
-                            /*if (field[m, k].MineAround == 0)
-                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
                         }
                     }
                 }
@@ -403,19 +403,12 @@ namespace FieldSpace
                             buttons[m, k].Content = field[m, k].MineAround;
                             field[m, k].Color(field, buttons, m, k);
                             field[m, k].IsOpen = true;
-                            /*if (field[m, k].MineAround == 0)
-                                field[m, k].OpenZeroAsync(field, buttons, m, k);*/
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
                         }
                     }
                 }
             }
-            #endregion
-        }
-
-        public async void OpenZeroAsync(Field[,] field, Button[,] buttons, int i, int j)    // Метод для асинхронного открытия клеток с нулём мин вокруг
-        {
-            #region Асинхронное открытие клеток с нулём мин вокруг
-            await Task.Run(() => OpenZero(field, buttons, i, j));
             #endregion
         }
     }
