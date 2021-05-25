@@ -148,14 +148,139 @@ namespace WpfApp1
                 if (field[i, j].IsMine && !field[i, j].IsFlagged)           // Если кнопка, на которую мы нажали - мина и она не помечена
                 {
                     MessageBox.Show("Вы проиграли");                        // То мы проигрываем
-                    Reload();
+                    fieldConstructor.Reload();
                 }
                 else if (!field[i, j].IsMine && !field[i, j].IsFlagged)     // Если это не мина и клетка не помечена флагом
                 {
-                    if (field[i, j].MineAround == 0)                        // И мин вокруг ноль, то открываем клетки вокруг
+                    // Если нажать на открытую клетку и количество отмеченных клеток == количеству мин вокруг, то открываем клетки вокруг
+                    if (field[i, j].IsOpen)                                 
+                    {
+                        int flagArround = 0;
+                    
+                        
+                        #region Подсчёт отмеченных клеток вокруг
+                        if (i == 0)
+                        {
+                            if (j == 0)
+                            {
+                                for (int m = i; m <= i + 1; m++)
+                                {
+                                    for (int k = j; k <= j + 1; k++)
+                                    {
+                                        if (field[m, k].IsFlagged)
+                                            flagArround++;
+                                    }
+                                }
+                            }
+                            else if (j == 9)
+                            {
+                                for (int m = i; m <= i + 1; m++)
+                                {
+                                    for (int k = j - 1; k <= j; k++)
+                                    {
+                                        if (field[m, k].IsFlagged)
+                                            flagArround++;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int m = i; m <= i + 1; m++)
+                                {
+                                    for (int k = j - 1; k <= j + 1; k++)
+                                    {
+                                        if (field[m, k].IsFlagged)
+                                            flagArround++;
+                                    }
+                                }
+                            }
+                        }
+                        else if (i == 9)
+                        {
+                            if (j == 0)
+                            {
+                                for (int m = i - 1; m <= i; m++)
+                                {
+                                    for (int k = j; k <= j + 1; k++)
+                                    {
+                                        if (field[m, k].IsFlagged)
+                                            flagArround++;
+                                    }
+                                }
+                            }
+                            else if (j == 9)
+                            {
+                                for (int m = i - 1; m <= i; m++)
+                                {
+                                    for (int k = j - 1; k <= j; k++)
+                                    {
+                                        if (field[m, k].IsFlagged)
+                                            flagArround++;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int m = i - 1; m <= i; m++)
+                                {
+                                    for (int k = j - 1; k <= j + 1; k++)
+                                    {
+                                        if (field[m, k].IsFlagged)
+                                            flagArround++;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (j == 0)
+                            {
+                                for (int m = i - 1; m <= i + 1; m++)
+                                {
+                                    for (int k = j; k <= j + 1; k++)
+                                    {
+                                        if (field[m, k].IsFlagged)
+                                            flagArround++;
+                                    }
+                                }
+                            }
+                            else if (j == 9)
+                            {
+                                for (int m = i - 1; m <= i + 1; m++)
+                                {
+                                    for (int k = j - 1; k <= j; k++)
+                                    {
+                                        if (field[m, k].IsFlagged)
+                                            flagArround++;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int m = i - 1; m <= i + 1; m++)
+                                {
+                                    for (int k = j - 1; k <= j + 1; k++)
+                                    {
+                                        if (field[m, k].IsFlagged)
+                                            flagArround++;
+                                    }
+                                }
+                            }
+                        }
+                        #endregion
+
+
+                        if (field[i, j].MineAround == flagArround)
+                            fieldConstructor.Around(field, buttons, i, j);
+                    }
+
+
+                    if (field[i, j].MineAround == 0)                        // Если мин вокруг ноль, то открываем клетки вокруг
                     {
                         fieldConstructor.OpenZero(field, buttons, i, j);
                     }
+
+
                     buttons[i, j].Content = field[i, j].MineAround;         // Открываем клетку, на которую мы нажали
                     fieldConstructor.Color(field, buttons, i, j);           // Устанавливаем соответствующий цвет текста кнопки
                     field[i, j].IsOpen = true;
@@ -174,7 +299,7 @@ namespace WpfApp1
                 if (MineFlagged == MineCount && OtherCellsFlagged == 0)     // Если количество помеченных мин = изначальному количеству мин и нет помеченных других клеток
                 {
                     MessageBox.Show("Вы победили");                         // То игрок побеждает
-                    Reload();
+                    fieldConstructor.Reload();
                 }
                 #endregion
             }
@@ -183,18 +308,7 @@ namespace WpfApp1
 
         private void Reload(object sender, RoutedEventArgs e)                   // Перезагрузка
         {
-            #region Перезагрузка
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();
-            #endregion
-        }
-
-        private void Reload()                                                   // Перезагрузка
-        {
-            #region Перезагрузка
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();
-            #endregion
+            fieldConstructor.Reload();
         }
     }
 }

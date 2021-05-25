@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -15,7 +16,7 @@ namespace FieldSpace
         public int MineAround { get; set; } = 0;               // количество мин вокруг
         public bool IsFlagged { get; set; } = false;           // Для проверки установлен ли флаг на клетку
         public bool IsOpen { get; set; } = false;              // Для того, чтобы показывать количество мин вокруг при снятии флага, если клетка уже была открыта
-        public void Generate(Field[,] field, int m, int k)                   // Метод для генерации поля
+        public void Generate(Field[,] field, int m, int k)                      // Метод для генерации поля
         {
             #region Генерация поля
             for (int i = 0; i < field.GetLength(1); i++)
@@ -252,7 +253,7 @@ namespace FieldSpace
             #endregion
         }
 
-        public void OpenZero(Field[,] field, Button[,] buttons, int i, int j)
+        public void OpenZero(Field[,] field, Button[,] buttons, int i, int j)   // Открытие клеток вокруг нуля
         {
             #region Открытие других клеток
             if (i == 0)
@@ -408,6 +409,218 @@ namespace FieldSpace
                     }
                 }
             }
+            #endregion
+        }
+
+        public void Around(Field[,] field, Button[,] buttons, int i, int j)     // Открытие клеток вокруг
+        {
+            #region Открытие других клеток
+            if (i == 0)
+            {
+                if (j == 0)
+                {
+                    for (int m = i; m <= i + 1; m++)
+                    {
+                        for (int k = j; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen || field[m, k].IsFlagged)
+                                continue;
+                            if (field[m, k].IsMine)
+                            {
+                                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                                Reload();
+                            }
+                            buttons[m, k].Content = field[m, k].MineAround;             // Открываем другие клетки
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
+                        }
+                    }
+                }
+                else if (j == 9)
+                {
+                    for (int m = i; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j; k++)
+                        {
+                            if (field[m, k].IsOpen || field[m, k].IsFlagged)
+                                continue;
+                            if (field[m, k].IsMine)
+                            {
+                                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                                Reload();
+                            }
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int m = i; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen || field[m, k].IsFlagged)
+                                continue;
+                            if (field[m, k].IsMine)
+                            {
+                                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                                Reload();
+                            }
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
+                        }
+                    }
+                }
+            }
+            else if (i == 9)
+            {
+                if (j == 0)
+                {
+                    for (int m = i - 1; m <= i; m++)
+                    {
+                        for (int k = j; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen || field[m, k].IsFlagged)
+                                continue;
+                            if (field[m, k].IsMine)
+                            {
+                                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                                Reload();
+                            }
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
+                        }
+                    }
+                }
+                else if (j == 9)
+                {
+                    for (int m = i - 1; m <= i; m++)
+                    {
+                        for (int k = j - 1; k <= j; k++)
+                        {
+                            if (field[m, k].IsOpen || field[m, k].IsFlagged)
+                                continue;
+                            if (field[m, k].IsMine)
+                            {
+                                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                                Reload();
+                            }
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int m = i - 1; m <= i; m++)
+                    {
+                        for (int k = j - 1; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen || field[m, k].IsFlagged)
+                                continue;
+                            if (field[m, k].IsMine)
+                            {
+                                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                                Reload();
+                            }
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (j == 0)
+                {
+                    for (int m = i - 1; m <= i + 1; m++)
+                    {
+                        for (int k = j; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen || field[m, k].IsFlagged)
+                                continue;
+                            if (field[m, k].IsMine)
+                            {
+                                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                                Reload();
+                            }
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
+                        }
+                    }
+                }
+                else if (j == 9)
+                {
+                    for (int m = i - 1; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j; k++)
+                        {
+                            if (field[m, k].IsOpen || field[m, k].IsFlagged)
+                                continue;
+                            if (field[m, k].IsMine)
+                            {
+                                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                                Reload();
+                            }
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int m = i - 1; m <= i + 1; m++)
+                    {
+                        for (int k = j - 1; k <= j + 1; k++)
+                        {
+                            if (field[m, k].IsOpen || field[m, k].IsFlagged)
+                                continue;
+                            if (field[m, k].IsMine)
+                            {
+                                MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                                Reload();
+                            }
+                            buttons[m, k].Content = field[m, k].MineAround;
+                            field[m, k].Color(field, buttons, m, k);
+                            field[m, k].IsOpen = true;
+                            if (field[m, k].MineAround == 0)
+                                field[m, k].OpenZero(field, buttons, m, k);
+                        }
+                    }
+                }
+            }
+            #endregion
+        }
+
+        public void Reload()                                                    // Перезагрузка
+        {
+            #region Перезагрузка
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
             #endregion
         }
     }
