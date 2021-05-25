@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using FieldSpace;
+using System.Windows.Input;
 using GameManagement;
 namespace WpfApp1
 {
@@ -14,10 +15,10 @@ namespace WpfApp1
     {
         Field[,] field = new Field[10, 10];                             // Создаём массив, размерностью поля
         Button[,] buttons = new Button[10, 10];                         // Создаю матрицу кнопок
-        Image FlagImage = new Image
+        /*Image FlagImage = new Image
         {
             Source = new BitmapImage(new Uri(@"C:\Users\Максим\Source\Repos\Minesweeper\WpfApp1\Icons\flag_icon.png", UriKind.RelativeOrAbsolute))    // Выбираю изображение для мины
-        };
+        };*/
         int ClickCount = 0;
         Field fieldConstructor = new Field();                           // Делаем ещё экземпляр класса для взаимодействия с классом
         int MineCount = Field.MineCount;                                // Получаем количство мин
@@ -42,8 +43,69 @@ namespace WpfApp1
             #endregion
         }
 
+        private void SettingFlags(object sender, RoutedEventArgs e)             // Включение и отключение режима флага
+        {
+            GameManager.IsSettingFlags = !GameManager.IsSettingFlags;
 
-        private void ClickOnField(object sender, RoutedEventArgs e)             // Нажатие на поле
+            #region Смена цвета для кнопки флага
+            if (GameManager.IsSettingFlags)
+                FlagButton.Background = Brushes.Red;
+            else
+                FlagButton.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            #endregion
+        }
+
+        private void FlagAdd(int i, int j)
+        {
+            #region Пометка клетки
+            if (!field[i, j].IsFlagged)                                 // Если клетка не помечена
+            {
+                //buttons[i, j].Content = FlagImage;                    //
+                //buttons[i, j].Content = 'X';                          // Пометка кнопки флагом
+                buttons[i, j].Background = Brushes.Red;                 //
+
+
+                FlagCount++;
+                FlagsCounter.Content = Convert.ToString(FlagCount);
+                if (field[i, j].IsMine)                                 // Если это мина
+                {
+                    MineFlagged++;                                      // То прибавляю к количеству помеченных мин
+                    field[i, j].IsFlagged = true;                       // Помечаю клетку
+                }
+                else if (!field[i, j].IsMine)                           // Если это не мина
+                {
+                    OtherCellsFlagged++;                                // То прибавляю к количеству помеченных других клеток
+                    field[i, j].IsFlagged = true;                       // Помечаю клетку
+                }
+            }
+            #endregion
+
+            #region Снятие пометки с клетки
+            else                                                        // Если клетка помечена
+            {
+                buttons[i, j].Content = "";                                                     // Убираю пометку с клетки
+                buttons[i, j].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));   // Снятие флага с кнопки
+
+
+                FlagCount--;
+                FlagsCounter.Content = Convert.ToString(FlagCount);
+                if (field[i, j].IsMine)                                 // Если это мина
+                {
+                    MineFlagged--;                                      // То убавляю количество помеченных мин
+                    field[i, j].IsFlagged = false;                      // Убираю пометку с клетки
+                }
+                else if (!field[i, j].IsMine)                           // Если это не мина
+                {
+                    OtherCellsFlagged--;                                // То убавляю количество помеченных других клеток
+                    field[i, j].IsFlagged = false;                      // Убираю пометку с клетки
+                    if (field[i, j].IsOpen)                             // Если клетка уже была открыта
+                        buttons[i, j].Content = field[i, j].MineAround; // Вывести количество мин вокруг
+                }
+            }
+            #endregion
+        }
+
+        private void ClickOnField(object sender, MouseButtonEventArgs e)
         {
             #region Генерация поля после первого нажатия на любую клетку
             ClickCount++;
@@ -81,11 +143,12 @@ namespace WpfApp1
 
 
             #region Нажатие на кнопку в обычном режиме
-            if (!GameManager.IsSettingFlags)                                // Если не выбран режим установки флагов
+            if (!GameManager.IsSettingFlags && e.LeftButton == MouseButtonState.Pressed)          // Если не выбран режим установки флагов
             {
                 if (field[i, j].IsMine && !field[i, j].IsFlagged)           // Если кнопка, на которую мы нажали - мина и она не помечена
                 {
                     MessageBox.Show("Вы проиграли");                        // То мы проигрываем
+                    Reload();
                 }
                 else if (!field[i, j].IsMine && !field[i, j].IsFlagged)     // Если это не мина и клетка не помечена флагом
                 {
@@ -100,80 +163,33 @@ namespace WpfApp1
             }
             #endregion
 
+
+            // Если выбран режим установки флагов или нажатие на правую кнопку
             #region Нажатие на кнопку в режиме флага
-            else if (GameManager.IsSettingFlags && !field[i, j].IsOpen)      // Если выбран режим установки флагов
+            else if ((GameManager.IsSettingFlags || e.RightButton == MouseButtonState.Pressed) && !field[i, j].IsOpen)      
             {
-                #region Пометка клетки
-                if (!field[i, j].IsFlagged)                                 // Если клетка не помечена
-                {
-                    //buttons[i, j].Content = FlagImage;                    //
-                    //buttons[i, j].Content = 'X';                          // Пометка кнопки флагом
-                    buttons[i, j].Background = Brushes.Red;                 //
-
-
-                    FlagCount++;
-                    FlagsCounter.Content = Convert.ToString(FlagCount);
-                    if (field[i, j].IsMine)                                 // Если это мина
-                    {
-                        MineFlagged++;                                      // То прибавляю к количеству помеченных мин
-                        field[i, j].IsFlagged = true;                       // Помечаю клетку
-                    }
-                    else if (!field[i, j].IsMine)                           // Если это не мина
-                    {
-                        OtherCellsFlagged++;                                // То прибавляю к количеству помеченных других клеток
-                        field[i, j].IsFlagged = true;                       // Помечаю клетку
-                    }
-                }
-                #endregion
-
-                #region Снятие пометки с клетки
-                else                                                        // Если клетка помечена
-                {
-                    buttons[i, j].Content = "";                                                     // Убираю пометку с клетки
-                    buttons[i, j].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));   // Снятие флага с кнопки
-
-
-                    FlagCount--;
-                    FlagsCounter.Content = Convert.ToString(FlagCount);
-                    if (field[i, j].IsMine)                                 // Если это мина
-                    {
-                        MineFlagged--;                                      // То убавляю количество помеченных мин
-                        field[i, j].IsFlagged = false;                      // Убираю пометку с клетки
-                    }
-                    else if (!field[i, j].IsMine)                           // Если это не мина
-                    {
-                        OtherCellsFlagged--;                                // То убавляю количество помеченных других клеток
-                        field[i, j].IsFlagged = false;                      // Убираю пометку с клетки
-                        if (field[i, j].IsOpen)                             // Если клетка уже была открыта
-                            buttons[i, j].Content = field[i, j].MineAround; // Вывести количество мин вокруг
-                    }
-                }
-                #endregion
-
+                FlagAdd(i, j);
 
                 #region Победа
                 if (MineFlagged == MineCount && OtherCellsFlagged == 0)     // Если количество помеченных мин = изначальному количеству мин и нет помеченных других клеток
                 {
                     MessageBox.Show("Вы победили");                         // То игрок побеждает
+                    Reload();
                 }
                 #endregion
             }
             #endregion
         }
 
-        private void SettingFlags(object sender, RoutedEventArgs e)             // Включение и отключение режима флага
+        private void Reload(object sender, RoutedEventArgs e)                   // Перезагрузка
         {
-            GameManager.IsSettingFlags = !GameManager.IsSettingFlags;
-
-            #region Смена цвета для кнопки флага
-            if (GameManager.IsSettingFlags)
-                FlagButton.Background = Brushes.Red;
-            else
-                FlagButton.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            #region Перезагрузка
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
             #endregion
         }
 
-        private void Reload(object sender, RoutedEventArgs e)                   // Перезагрузка
+        private void Reload()                                                   // Перезагрузка
         {
             #region Перезагрузка
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
