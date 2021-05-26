@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="331" Width="448" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="MainWindow" Height="331" Width="383" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <Grid x:Name ="FieldGrid" HorizontalAlignment="Left" Height="200" Margin="32,83,0,0" VerticalAlignment="Top" Width="200">
             <Grid.RowDefinitions>
@@ -333,11 +333,11 @@
                 <Image/>
             </Button>
         </Grid>
-        <Label HorizontalAlignment="Left" Margin="260,30,0,0" VerticalAlignment="Top" Height="29" Width="110" Content="Количество мин:"/>
-        <Label x:Name="MineCounter" Margin="361,30,9,235" RenderTransformOrigin="0.495,0.088"/>
-        <Button Name="FlagButton" Content="Флаг" HorizontalAlignment="Left" Height="32" Margin="32,31,0,0" VerticalAlignment="Top" Width="200" Click="SettingFlags"/>
-        <Label HorizontalAlignment="Left" Margin="260,53,0,0" VerticalAlignment="Top" Height="44" Width="155" Content="Количество поставленных &#xD;&#xA;флагов:"/>
-        <Label x:Name="FlagsCounter" Margin="312,68,58,196" RenderTransformOrigin="0.495,0.088"/>
-        <Button Content="Перезагрузка" HorizontalAlignment="Left" Margin="329,243,0,0" VerticalAlignment="Top" Width="92" Height="42" Click="Reload"/>
+        <Label Margin="274,28,56,0" VerticalAlignment="Top" Height="29" Width="47" Content="Мин:"/>
+        <Label x:Name="MineCounter" Margin="311,29,15,236" RenderTransformOrigin="0.495,0.088"/>
+        <Button Name="FlagButton" Content="Флаг" HorizontalAlignment="Left" Height="32" Margin="32,31,0,0" VerticalAlignment="Top" Width="95" Click="SettingFlags"/>
+        <Label Margin="261,53,60,0" VerticalAlignment="Top" Height="27" Width="56" Content="Флагов:"/>
+        <Label x:Name="FlagsCounter" Margin="311,54,15,210" RenderTransformOrigin="0.495,0.088"/>
+        <Button Content="Перезагрузка" HorizontalAlignment="Left" Margin="137,31,0,0" VerticalAlignment="Top" Width="92" Height="32" Click="Reload"/>
     </Grid>
 </Window>
