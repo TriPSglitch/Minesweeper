@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="331" Width="383" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="MainWindow" Height="331" Width="383" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid x:Name ="FieldGrid" HorizontalAlignment="Left" Height="200" Margin="32,83,0,0" VerticalAlignment="Top" Width="200">
             <Grid.RowDefinitions>
@@ -32,312 +32,313 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Grid.Row="0" PreviewMouseDown ="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="0" Grid.Row="0" PreviewMouseDown ="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="0" Grid.Row="1" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="0" Grid.Row="1" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="0" Grid.Row="2" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="0" Grid.Row="2" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="0" Grid.Row="3" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="0" Grid.Row="3" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="0" Grid.Row="4" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="0" Grid.Row="4" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="0" Grid.Row="5" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="0" Grid.Row="5" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="0" Grid.Row="6" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="0" Grid.Row="6" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="0" Grid.Row="7" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="0" Grid.Row="7" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="0" Grid.Row="8" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="0" Grid.Row="8" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="0" Grid.Row="9" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="0" Grid.Row="9" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="1" Grid.Row="0" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="1" Grid.Row="0" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="1" Grid.Row="1" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="1" Grid.Row="1" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="1" Grid.Row="2" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="1" Grid.Row="2" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="1" Grid.Row="3" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="1" Grid.Row="3" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="1" Grid.Row="4" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="1" Grid.Row="4" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="1" Grid.Row="5" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="1" Grid.Row="5" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="1" Grid.Row="6" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="1" Grid.Row="6" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="1" Grid.Row="7" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="1" Grid.Row="7" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="1" Grid.Row="8" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="1" Grid.Row="8" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="1" Grid.Row="9" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="1" Grid.Row="9" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="2" Grid.Row="0" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="2" Grid.Row="0" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="2" Grid.Row="1" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="2" Grid.Row="1" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="2" Grid.Row="2" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="2" Grid.Row="2" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="2" Grid.Row="3" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="2" Grid.Row="3" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="2" Grid.Row="4" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="2" Grid.Row="4" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="2" Grid.Row="5" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="2" Grid.Row="5" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="2" Grid.Row="6" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="2" Grid.Row="6" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="2" Grid.Row="7" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="2" Grid.Row="7" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="2" Grid.Row="8" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="2" Grid.Row="8" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="2" Grid.Row="9" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="2" Grid.Row="9" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="3" Grid.Row="0" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="3" Grid.Row="0" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="3" Grid.Row="1" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="3" Grid.Row="1" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="3" Grid.Row="2" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="3" Grid.Row="2" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="3" Grid.Row="3" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="3" Grid.Row="3" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="3" Grid.Row="4" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="3" Grid.Row="4" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="3" Grid.Row="5" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="3" Grid.Row="5" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="3" Grid.Row="6" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="3" Grid.Row="6" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="3" Grid.Row="7" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="3" Grid.Row="7" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="3" Grid.Row="8" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="3" Grid.Row="8" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="3" Grid.Row="9" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="3" Grid.Row="9" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="4" Grid.Row="0" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="4" Grid.Row="0" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="4" Grid.Row="1" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="4" Grid.Row="1" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="4" Grid.Row="2" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="4" Grid.Row="2" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="4" Grid.Row="3" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="4" Grid.Row="3" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="4" Grid.Row="4" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="4" Grid.Row="4" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="4" Grid.Row="5" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="4" Grid.Row="5" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="4" Grid.Row="6" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="4" Grid.Row="6" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="4" Grid.Row="7" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="4" Grid.Row="7" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="4" Grid.Row="8" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="4" Grid.Row="8" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="4" Grid.Row="9" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="4" Grid.Row="9" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="5" Grid.Row="0" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="5" Grid.Row="0" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="5" Grid.Row="1" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="5" Grid.Row="1" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="5" Grid.Row="2" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="5" Grid.Row="2" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="5" Grid.Row="3" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="5" Grid.Row="3" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="5" Grid.Row="4" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="5" Grid.Row="4" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="5" Grid.Row="5" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="5" Grid.Row="5" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="5" Grid.Row="6" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="5" Grid.Row="6" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="5" Grid.Row="7" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="5" Grid.Row="7" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="5" Grid.Row="8" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="5" Grid.Row="8" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="5" Grid.Row="9" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="5" Grid.Row="9" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="6" Grid.Row="0" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="6" Grid.Row="0" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="6" Grid.Row="1" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="6" Grid.Row="1" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="6" Grid.Row="2" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="6" Grid.Row="2" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="6" Grid.Row="3" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="6" Grid.Row="3" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="6" Grid.Row="4" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="6" Grid.Row="4" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="6" Grid.Row="5" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="6" Grid.Row="5" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="6" Grid.Row="6" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="6" Grid.Row="6" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="6" Grid.Row="7" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="6" Grid.Row="7" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="6" Grid.Row="8" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="6" Grid.Row="8" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="6" Grid.Row="9" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="6" Grid.Row="9" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="7" Grid.Row="0" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="7" Grid.Row="0" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="7" Grid.Row="1" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="7" Grid.Row="1" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="7" Grid.Row="2" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="7" Grid.Row="2" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="7" Grid.Row="3" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="7" Grid.Row="3" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="7" Grid.Row="4" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="7" Grid.Row="4" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="7" Grid.Row="5" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="7" Grid.Row="5" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="7" Grid.Row="6" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="7" Grid.Row="6" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="7" Grid.Row="7" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="7" Grid.Row="7" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="7" Grid.Row="8" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="7" Grid.Row="8" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="7" Grid.Row="9" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="7" Grid.Row="9" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="8" Grid.Row="0" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="8" Grid.Row="0" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="8" Grid.Row="1" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="8" Grid.Row="1" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="8" Grid.Row="2" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="8" Grid.Row="2" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="8" Grid.Row="3" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="8" Grid.Row="3" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="8" Grid.Row="4" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="8" Grid.Row="4" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="8" Grid.Row="5" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="8" Grid.Row="5" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="8" Grid.Row="6" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="8" Grid.Row="6" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="8" Grid.Row="7" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="8" Grid.Row="7" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="8" Grid.Row="8" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="8" Grid.Row="8" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="8" Grid.Row="9" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="8" Grid.Row="9" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="9" Grid.Row="0" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="9" Grid.Row="0" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="9" Grid.Row="1" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="9" Grid.Row="1" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="9" Grid.Row="2" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="9" Grid.Row="2" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="9" Grid.Row="3" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="9" Grid.Row="3" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="9" Grid.Row="4" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="9" Grid.Row="4" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="9" Grid.Row="5" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="9" Grid.Row="5" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="9" Grid.Row="6" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="9" Grid.Row="6" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="9" Grid.Row="7" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="9" Grid.Row="7" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="9" Grid.Row="8" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="9" Grid.Row="8" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
-            <Button Grid.Column="9" Grid.Row="9" PreviewMouseDown="ClickOnField" FontWeight="Bold">
+            <Button Grid.Column="9" Grid.Row="9" PreviewMouseDown="ClickOnCell" FontWeight="Bold">
                 <Image/>
             </Button>
         </Grid>
         <Label Margin="274,28,56,0" VerticalAlignment="Top" Height="29" Width="47" Content="Мин:"/>
-        <Label x:Name="MineCounter" Margin="311,29,15,236" RenderTransformOrigin="0.495,0.088"/>
-        <Button Name="FlagButton" Content="Флаг" HorizontalAlignment="Left" Height="32" Margin="32,31,0,0" VerticalAlignment="Top" Width="95" Click="SettingFlags"/>
-        <Label Margin="261,53,60,0" VerticalAlignment="Top" Height="27" Width="56" Content="Флагов:"/>
-        <Label x:Name="FlagsCounter" Margin="311,54,15,210" RenderTransformOrigin="0.495,0.088"/>
-        <Button Content="Перезагрузка" HorizontalAlignment="Left" Margin="137,31,0,0" VerticalAlignment="Top" Width="92" Height="32" Click="Reload"/>
+        <Label x:Name="MineCounter" VerticalAlignment="Top" Margin="313,28,28,0" Height="29"/>
+        <Button Name="FlagButton" Content="Флаг" HorizontalAlignment="Left" Height="32" Margin="32,31,0,0" VerticalAlignment="Top" Width="36" Click="SettingFlags"/>
+        <Label Margin="260,53,31,0" VerticalAlignment="Top" Height="29" Content="Флагов:"/>
+        <Label x:Name="FlagsCounter" Margin="313,53,28,0" VerticalAlignment="Top"  Height="29"/>
+        <Button Name="ReloadButton" Content="Перезагрузка" HorizontalAlignment="Left" Margin="73,31,0,0" VerticalAlignment="Top" Width="36" Height="32" Click="ClickReload"/>
+        <Button Name="DifficultyLevelButton"  Content="Уровень сложности" HorizontalAlignment="Left" Margin="113,31,0,0" VerticalAlignment="Top" Width="119" Height="32" Click="DifficultyLevelSelector"/>
     </Grid>
 </Window>
